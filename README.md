@@ -75,9 +75,9 @@ pc.run()
 
 ### B) Append the weights to the base table
 
-We got the weights! They are stored in a location specified by `conf[AutoMLConfig.DATA][AutoMLConfig.WEIGHT_PATH]`.
+We got the weights! They are stored as a csv file in a location specified by `conf[AutoMLConfig.DATA][AutoMLConfig.WEIGHT_PATH]`.
 
-Now, we just need to append them to the base table. This base table could be the source data, target data, or merged data (source and target). Please adjust with your needs.
+Now, we just need to append them to the base table. The base table could be the source data, target data, or merged data (source and target). Please adjust with your needs.
 
 Suppose that we'd like to append the weights to the merged data.
 
@@ -88,7 +88,7 @@ label_col = conf[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL]
 
 base_frame_df = spark.read.parquet(base_table_path).drop(label_col)
 
-weight_df = spark.read.csv(conf[AutoMLConfig.DATA][AutoMLConfig.WEIGHT_PATH], header=True)
+weight_df = spark.read.csv(weight_path, header=True)
 
 weighted_base_frame_df = base_frame_df.join(weight_df, how='left', on='row_id')
 ```
@@ -96,12 +96,7 @@ weighted_base_frame_df = base_frame_df.join(weight_df, how='left', on='row_id')
 How about if we'd like to append the weights to the source data only?
 
 ```python
-base_table_path = conf[AutoMLConfig.DATA][AutoMLConfig.BASE_TABLE_PATH]
-weight_path = conf[AutoMLConfig.DATA][AutoMLConfig.WEIGHT_PATH]
-label_col = conf[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL]
-
 base_frame_df = spark.read.parquet(base_table_path)
-
 source_df = base_frame_df.filter(F.col(label_col) == OriginFeatures.SOURCE)
 
 weight_df = spark.read.csv(weight_path, header=True)
@@ -113,7 +108,7 @@ Done.
 
 ## Contribute
 
-All features requests or bugs fixes are welcomed.
+All features requests or bugs fixes for future improvement are welcomed.
 
 Simply do the followings:
 
