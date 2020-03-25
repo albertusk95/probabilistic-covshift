@@ -1,0 +1,26 @@
+class AutoMLConfig(object):
+    SERVER_CONN_INFO = 'server_conn_info'
+    BASE_TABLE_PATH = 'base_table_path'
+    DATA = 'data'
+    COL_NAMES = 'col_names'
+    LABEL_COL = 'label_col'
+    WEIGHT_COL = 'weight_col'
+    CROSS_VAL = 'cross_val'
+    FOLD_COL = 'fold_col'
+    NFOLDS = 'nfolds'
+    LEARNING = 'learning'
+    STOPPING_PARAMS = 'stopping_params'
+    MAX_RUNTIME_SECS = 'max_runtime_secs'
+    MODELING = 'modeling'
+    MAX_MODELS = 'max_models'
+    STOPPING_METRIC = 'stopping_metric'
+    SEED = 'seed'
+    SORT_METRIC = 'sort_metric'
+    EXCLUDE_ALGOS = 'exclude_algos'
+    MODEL = 'model'
+    BEST_MODEL_PATH = 'best_model_path'
+
+
+class H2OServerInfo(object):
+    IP = 'ip'
+    PORT = 'port'
