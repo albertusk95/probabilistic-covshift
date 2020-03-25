@@ -10,7 +10,7 @@ The important modules:
 
 <ul>
   <li><b>probabilistic_classification_covshift</b> - the main module</li>
-  <li><b>automl.trainer</b> - leverages H2O AutoML to fit the classifiers</li>
+  <li><b>automl.trainer</b> - find the best classifier that separates the source instances from the target ones</li>
   <li><b>automl.predictor</b> - the best classifier is used to compute the probability of each instance belongs to the source or target origin. The computed probabilities become the parameters of the weight calculation</li>
 </ul>
 
