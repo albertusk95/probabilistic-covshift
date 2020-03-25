@@ -1,8 +1,8 @@
 # Probabilistic Classification for Density Ratio Estimation
 
-This repo provides a python package used for distribution density ratio estimation using probabilistic classification. It's one of the many techniques to estimate the density ratio (the simple & classic one, though).
+This repo provides a python package used for distribution density ratio estimation using probabilistic classification. It's one of the techniques to estimate the density ratio (the simple & classic one, though).
 
-For more info re. the approach, please visit this <a href="https://albertusk95.github.io/posts/2020/03/density-ratio-estimation-probabilistic-classification/">post</a>.
+For more info on the approach, please visit this <a href="https://albertusk95.github.io/posts/2020/03/density-ratio-estimation-probabilistic-classification/">post</a>.
 
 ## Modules
 
