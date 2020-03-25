@@ -1,6 +1,7 @@
 class AutoMLConfig(object):
     SERVER_CONN_INFO = 'server_conn_info'
     BASE_TABLE_PATH = 'base_table_path'
+    WEIGHT_PATH = 'weight_path'
     DATA = 'data'
     COL_NAMES = 'col_names'
     LABEL_COL = 'label_col'

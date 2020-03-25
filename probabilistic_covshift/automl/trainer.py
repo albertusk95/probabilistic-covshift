@@ -42,7 +42,11 @@ class AutoMLTrainer(object):
         return auto_ml_leader_path
 
     def retrieve_h2o_base_table_predictors(self, h2o_base_table: h2o.H2OFrame):
-        return h2o_base_table.col_names
+        cols_to_drop = [
+            'row_id',
+            self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL]
+        ]
+        return h2o_base_table.drop(cols_to_drop).col_names
 
     def save_auto_ml_leader(self, auto_ml):
         auto_ml_leader_path = h2o.save_model(

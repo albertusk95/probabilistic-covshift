@@ -51,4 +51,4 @@ def add_unique_row_id(h2o_base_table: h2o.H2OFrame):
         ids.append(id)
 
     h2o_id_frame = h2o.H2OFrame(ids)
-    return h2o_base_table.cbind(h2o_id_frame.set_names(['id']))
+    return h2o_base_table.cbind(h2o_id_frame.set_names(['row_id']))
