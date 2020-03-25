@@ -1,9 +1,9 @@
 import h2o
 
-from probabilistic_covshift.automl import util as h2o_util
 from probabilistic_covshift import util as util
-from probabilistic_covshift.constants.automl_constants import AutoMLConfig as AutoMLConfig
-from probabilistic_covshift.constants.main_constants import OriginFeatures as OriginFeatures
+from probabilistic_covshift.automl import util as h2o_util
+from probabilistic_covshift.constants.automl_constants import AutoMLConfig
+from probabilistic_covshift.constants.main_constants import OriginFeatures
 
 logger = util.create_logger(__name__)
 

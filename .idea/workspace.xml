@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ee9721c6-c10c-4a4d-8589-35d7844eb08c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/example/.ipynb_checkpoints/main_example.py-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/example/.ipynb_checkpoints/main_example.py-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/data/weight.parquet" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/main_example.py.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/example/main_example.py.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="ee9721c6-c10c-4a4d-8589-35d7844eb08c" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/probabilistic_covshift/probabilistic_classification_covshift.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1215">
-              <caret line="81" column="79" selection-start-line="81" selection-start-column="79" selection-end-line="81" selection-end-column="79" />
+            <state relative-caret-position="592">
+              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -308,8 +304,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/probabilistic_covshift/probabilistic_classification_covshift.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="81" column="79" selection-start-line="81" selection-start-column="79" selection-end-line="81" selection-end-column="79" />
+        <state relative-caret-position="592">
+          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>

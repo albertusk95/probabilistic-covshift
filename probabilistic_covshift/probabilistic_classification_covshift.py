@@ -2,8 +2,8 @@ from pyspark.sql import functions as F
 from pyspark.sql.types import StringType
 from pyspark.sql import Window
 
-from probabilistic_covshift.constants.main_constants import OriginFeatures as OriginFeatures
-from probabilistic_covshift.constants.automl_constants import AutoMLConfig as AutoMLConfig
+from probabilistic_covshift.constants.automl_constants import AutoMLConfig
+from probabilistic_covshift.constants.main_constants import OriginFeatures
 from probabilistic_covshift.automl.predictor import AutoMLPredictor
 from probabilistic_covshift.automl.trainer import AutoMLTrainer
 
@@ -17,15 +17,6 @@ class ProbabilisticClassification(object):
 
         if auto_ml_config[AutoMLConfig.SERVER_CONN_INFO] is None:
             raise ValueError('H2O server info must be specified')
-
-    def retrieve_continuous_predictors(self):
-        cols_and_types = self.source_df.dtypes
-
-        continuous_preds = []
-        for col, type in cols_and_types:
-            if type != 'string':
-                continuous_preds.append(col)
-        return continuous_preds
 
     def add_origin_feature(self):
         self.source_df = self.source_df.withColumn(self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL],
@@ -58,11 +49,6 @@ class ProbabilisticClassification(object):
         return source_df_.count(), target_df_.count()
 
     def run(self):
-        continuous_predictors = self.retrieve_continuous_predictors()
-
-        self.source_df = self.source_df.select(*continuous_predictors)
-        self.target_df = self.target_df.select(*continuous_predictors)
-
         self.add_origin_feature()
         self.merge_source_and_target()
         self.add_unique_row_id()

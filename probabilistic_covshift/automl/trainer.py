@@ -2,10 +2,10 @@ import h2o
 
 from h2o.automl import H2OAutoML, get_leaderboard
 
-from probabilistic_covshift.automl import util as h2o_util
 from probabilistic_covshift import util as util
-from probabilistic_covshift.constants.automl_constants import AutoMLConfig as AutoMLConfig
-from probabilistic_covshift.constants.automl_constants import H2OServerInfo as H2OServerInfo
+from probabilistic_covshift.automl import util as h2o_util
+from probabilistic_covshift.constants.automl_constants import AutoMLConfig
+from probabilistic_covshift.constants.automl_constants import H2OServerInfo
 
 logger = util.create_logger(__name__)
 
