@@ -118,3 +118,7 @@ Simply do the followings:
   <li>Develop your features on the branch</li>
   <li>Submit a pull request</li>
 </ul>
+
+## Author
+
+Copyright Albertus Kelvin 2020
