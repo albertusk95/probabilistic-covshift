@@ -17,7 +17,7 @@ class AutoMLTrainer(object):
     def view_leaderboard(self, auto_ml):
         leader_board = get_leaderboard(auto_ml, extra_columns='ALL')
         logger.info('Leaderboard: \n{}'.format(leader_board.head(rows=leader_board.nrows)))
-        h2o_util.get_model_performance(auto_ml.leader)
+        h2o_util.show_model_performance(auto_ml.leader)
 
     def train(self, h2o_base_table: h2o.H2OFrame, h2o_base_table_predictors: [str]):
         auto_ml = H2OAutoML(
