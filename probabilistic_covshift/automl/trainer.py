@@ -1,6 +1,6 @@
 import h2o
 
-from h2o.automl import H2OAutoML, get_leaderboard
+from h2o.automl import get_leaderboard, H2OAutoML
 
 from probabilistic_covshift import util as util
 from probabilistic_covshift.automl import util as h2o_util
@@ -19,6 +19,12 @@ class AutoMLTrainer(object):
         logger.info('Leaderboard: \n{}'.format(leader_board.head(rows=leader_board.nrows)))
         h2o_util.show_model_performance(auto_ml.leader)
 
+    def save_auto_ml_leader(self, auto_ml):
+        auto_ml_leader_path = h2o.save_model(
+            auto_ml.leader,
+            path=self.auto_ml_config[AutoMLConfig.MODEL][AutoMLConfig.BEST_MODEL_PATH])
+        return auto_ml_leader_path
+    
     def train(self, h2o_base_table: h2o.H2OFrame, h2o_base_table_predictors: [str]):
         auto_ml = H2OAutoML(
             nfolds=self.auto_ml_config[AutoMLConfig.CROSS_VAL][AutoMLConfig.NFOLDS],
@@ -47,12 +53,6 @@ class AutoMLTrainer(object):
             self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL]
         ]
         return h2o_base_table.drop(cols_to_drop).col_names
-
-    def save_auto_ml_leader(self, auto_ml):
-        auto_ml_leader_path = h2o.save_model(
-            auto_ml.leader,
-            path=self.auto_ml_config[AutoMLConfig.MODEL][AutoMLConfig.BEST_MODEL_PATH])
-        return auto_ml_leader_path
 
     def run(self):
         h2o_util.init_server_connection(
