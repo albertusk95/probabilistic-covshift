@@ -38,7 +38,7 @@ def get_model_performance(model: H2OEstimator):
     logger.info(cross_val_model_performance)
 
     [[threshold, f1]] = cross_val_model_performance.F1()
-    logger.info('Threshold that maximizes F1: {}'.format(threshold))
+    logger.info('Threshold for max F1: {}'.format(threshold))
     logger.info('F1: {}'.format(f1))
     return threshold, f1
 
