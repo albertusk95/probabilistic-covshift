@@ -15,12 +15,7 @@ class AutoMLPredictor(object):
         self.num_target = num_target
 
     def load_model(self):
-        logger.info('Load the model and leaderboard')
-
         model = h2o.load_model(self.auto_ml_config[AutoMLConfig.MODEL][AutoMLConfig.BEST_MODEL_PATH])
-
-        logger.info('Type(model): {}'.format(type(model)))
-        logger.info('Loaded model: {}'.format(model.summary()))
         return model
 
     def predict(self, auto_ml_leader, h2o_base_table):
