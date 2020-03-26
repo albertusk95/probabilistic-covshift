@@ -29,18 +29,13 @@ def create_fold_column_if_not_exist(h2o_base_table: h2o.H2OFrame, fold_column: s
     return h2o_base_table
 
 
-def get_model_performance(model: H2OEstimator):
-    logger.info('Cross validation metrics summary')
-    logger.info(model.cross_validation_metrics_summary())
-
+def show_model_performance(model: H2OEstimator):
     cross_val_model_performance = model.model_performance(xval=True)
     logger.info('Cross validation model performance')
     logger.info(cross_val_model_performance)
 
     [[threshold, f1]] = cross_val_model_performance.F1()
-    logger.info('Threshold for max F1: {}'.format(threshold))
-    logger.info('F1: {}'.format(f1))
-    return threshold, f1
+    logger.info('Threshold = {} for maximum F1 = {}'.format(threshold, f1))
 
 
 def add_unique_row_id(h2o_base_table: h2o.H2OFrame):
