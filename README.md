@@ -14,14 +14,6 @@ The important modules:
   <li><b>automl.predictor</b> - the best classifier is used to compute the probability of each instance belongs to the source or target origin. The computed probabilities become the parameters for the weight calculation</li>
 </ul>
 
-## Tech stack
-
-<ul>
-  <li>PySpark</li>
-  <li>H2O AutoML</li>
-  <li>Python</li>
-</ul>
-
 ## Quickstart
 
 You might want to take a look at the <a href="https://github.com/albertusk95/probabilistic-covshift/tree/master/example">example</a>.
