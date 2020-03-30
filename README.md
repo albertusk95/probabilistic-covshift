@@ -32,7 +32,7 @@ The important modules:
 ## Install
 
 1. Clone this repo
-2. Go to the repo directory
+2. Go to the repo's root directory
 3. Run the following command: `python setup.py install`
 
 ## Quickstart
