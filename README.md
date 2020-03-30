@@ -29,6 +29,12 @@ The important modules:
   </li>
 </ul>
 
+## Install
+
+1. Clone this repo
+2. Go to the repo's root directory
+3. Run the following command: `python setup.py install`
+
 ## Quickstart
 
 You might want to take a look at the <a href="https://github.com/albertusk95/probabilistic-covshift/tree/master/example">example</a>.
