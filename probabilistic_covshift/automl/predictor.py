@@ -44,7 +44,7 @@ class AutoMLPredictor(object):
 
         h2o_base_table = h2o_util.convert_label_to_enum_type(
             h2o_base_table,
-            self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL])
+            self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL])
 
         auto_ml_leader = self.load_model()
 

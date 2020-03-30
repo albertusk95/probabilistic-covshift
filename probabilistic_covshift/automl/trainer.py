@@ -35,7 +35,7 @@ class AutoMLTrainer(object):
             sort_metric=self.auto_ml_config[AutoMLConfig.MODELING][AutoMLConfig.SORT_METRIC],
             exclude_algos=self.auto_ml_config[AutoMLConfig.EXCLUDE_ALGOS])
 
-        auto_ml.train(x=h2o_base_table_predictors, y=self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL],
+        auto_ml.train(x=h2o_base_table_predictors, y=self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL],
                       training_frame=h2o_base_table,
                       fold_column=self.auto_ml_config[AutoMLConfig.CROSS_VAL][AutoMLConfig.FOLD_COL])
 
@@ -50,7 +50,8 @@ class AutoMLTrainer(object):
     def retrieve_h2o_base_table_predictors(self, h2o_base_table: h2o.H2OFrame):
         cols_to_drop = [
             'row_id',
-            self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL]
+            self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL],
+            self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL]
         ]
         return h2o_base_table.drop(cols_to_drop).col_names
 
@@ -65,7 +66,7 @@ class AutoMLTrainer(object):
 
         h2o_base_table = h2o_util.convert_label_to_enum_type(
             h2o_base_table,
-            self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL])
+            self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL])
 
         h2o_base_table_predictors = self.retrieve_h2o_base_table_predictors(h2o_base_table)
 

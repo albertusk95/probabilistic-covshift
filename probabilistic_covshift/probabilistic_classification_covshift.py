@@ -19,9 +19,9 @@ class ProbabilisticClassification(object):
             raise ValueError('H2O server info must be specified')
 
     def add_origin_feature(self):
-        self.source_df = self.source_df.withColumn(self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL],
+        self.source_df = self.source_df.withColumn(self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL],
                                                    F.lit(OriginFeatures.SOURCE))
-        self.target_df = self.target_df.withColumn(self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL],
+        self.target_df = self.target_df.withColumn(self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL],
                                                    F.lit(OriginFeatures.TARGET))
 
     def add_unique_row_id(self):
@@ -34,7 +34,7 @@ class ProbabilisticClassification(object):
 
     def set_origin_as_categorical(self):
         self.base_table_df = self.base_table_df.withColumn(
-            self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL],
+            self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL],
             F.col(OriginFeatures.ORIGIN).cast(StringType()))
 
     def save_base_table(self):
@@ -43,7 +43,7 @@ class ProbabilisticClassification(object):
             mode='overwrite')
 
     def compute_data_rows(self):
-        source_df_ = self.base_table_df.filter(F.col(self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL]) \
+        source_df_ = self.base_table_df.filter(F.col(self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL]) \
                                                == OriginFeatures.SOURCE)
         target_df_ = self.base_table_df.exceptAll(source_df_)
         return source_df_.count(), target_df_.count()

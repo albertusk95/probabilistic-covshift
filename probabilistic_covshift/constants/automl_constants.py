@@ -5,6 +5,7 @@ class AutoMLConfig(object):
     DATA = 'data'
     COL_NAMES = 'col_names'
     LABEL_COL = 'label_col'
+    ORIGIN_COL = 'origin_col'
     WEIGHT_COL = 'weight_col'
     CROSS_VAL = 'cross_val'
     FOLD_COL = 'fold_col'
