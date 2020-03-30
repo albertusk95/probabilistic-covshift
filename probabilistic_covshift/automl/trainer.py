@@ -52,7 +52,7 @@ class AutoMLTrainer(object):
             'row_id',
             self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL],
             self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL]
-        ]
+        ] + self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.CATEGORICAL_VARIABLES]
         return h2o_base_table.drop(cols_to_drop).col_names
 
     def run(self):

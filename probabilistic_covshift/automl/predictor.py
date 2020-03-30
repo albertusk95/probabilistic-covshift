@@ -39,9 +39,7 @@ class AutoMLPredictor(object):
         h2o_base_table = h2o_util.convert_base_table_to_h2o_frame(
             self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.BASE_TABLE_PATH],
             self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.COL_NAMES])
-
-        h2o_base_table = h2o_util.add_unique_row_id(h2o_base_table)
-
+    
         h2o_base_table = h2o_util.convert_label_to_enum_type(
             h2o_base_table,
             self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL])

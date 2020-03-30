@@ -4,6 +4,7 @@ class AutoMLConfig(object):
     WEIGHT_PATH = 'weight_path'
     DATA = 'data'
     COL_NAMES = 'col_names'
+    CATEGORICAL_VARIABLES = 'categorical_variables'
     LABEL_COL = 'label_col'
     ORIGIN_COL = 'origin_col'
     WEIGHT_COL = 'weight_col'

@@ -59,7 +59,6 @@ class ProbabilisticClassification(object):
 
         trainer = AutoMLTrainer(self.auto_ml_config)
         auto_ml_leader_path = trainer.run()
-        print(auto_ml_leader_path)
 
         self.auto_ml_config[AutoMLConfig.MODEL][AutoMLConfig.BEST_MODEL_PATH] = auto_ml_leader_path
 
