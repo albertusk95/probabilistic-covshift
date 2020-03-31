@@ -46,7 +46,9 @@ Prepare the configuration for AutoML.
 ```
 conf = {
     AutoMLConfig.DATA: {
-        AutoMLConfig.LABEL_COL: OriginFeatures.ORIGIN,
+        AutoMLConfig.CATEGORICAL_VARIABLES: ['col_a', 'col_b'],
+        AutoMLConfig.LABEL_COL: 'label',
+        AutoMLConfig.ORIGIN_COL: OriginFeatures.ORIGIN,
         AutoMLConfig.WEIGHT_COL: WeightFeatures.WEIGHT,
         AutoMLConfig.BASE_TABLE_PATH: 'data/base_table.parquet',
         AutoMLConfig.WEIGHT_PATH: 'data/weight.csv'
@@ -97,31 +99,30 @@ Suppose that we'd like to append the weights to the merged data.
 ```python
 base_table_path = conf[AutoMLConfig.DATA][AutoMLConfig.BASE_TABLE_PATH]
 weight_path = conf[AutoMLConfig.DATA][AutoMLConfig.WEIGHT_PATH]
-label_col = conf[AutoMLConfig.DATA][AutoMLConfig.LABEL_COL]
+origin_col = conf[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL]
 
-base_frame_df = spark.read.parquet(base_table_path).drop(label_col)
-
+base_frame_df = spark.read.parquet(base_table_path).drop(origin_col)
 weight_df = spark.read.csv(weight_path, header=True)
 
-weighted_base_frame_df = base_frame_df.join(weight_df, how='left', on='row_id')
+weighted_base_frame_df = base_frame_df.join(weight_df, how='left', on='row_id').drop('row_id')
 ```
 
 How about if we'd like to append the weights to the source data only?
 
 ```python
 base_frame_df = spark.read.parquet(base_table_path)
-source_df = base_frame_df.filter(F.col(label_col) == OriginFeatures.SOURCE)
+source_df = base_frame_df.filter(F.col(origin_col) == OriginFeatures.SOURCE)
 
 weight_df = spark.read.csv(weight_path, header=True)
 
-weighted_base_frame_df = source_df.join(weight_df, how='left', on='row_id')
+weighted_base_frame_df = source_df.join(weight_df, how='left', on='row_id').drop('row_id')
 ```
 
 Done.
 
 ## Contribute
 
-All features requests or bugs fixes for future improvement are welcomed.
+All features requests, documentations or bugs fixes for future improvement are welcomed.
 
 Simply do the followings:
 
@@ -134,4 +135,4 @@ Simply do the followings:
 
 ## Author
 
-Copyright Albertus Kelvin 2020
+Albertus Kelvin
