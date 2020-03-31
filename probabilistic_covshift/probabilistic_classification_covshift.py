@@ -31,7 +31,14 @@ class ProbabilisticClassification(object):
 
     def merge_source_and_target(self):
         self.base_table_df = self.source_df.unionByName(self.target_df)
-
+        
+    def get_categorical_variables(self):
+        categorical_vars = []
+        for col_name, col_type in self.base_table_df.dtypes:
+            if col_type == 'string':
+                categorical_vars.append(col_name)
+        return categorical_vars
+        
     def set_origin_as_categorical(self):
         self.base_table_df = self.base_table_df.withColumn(
             self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.ORIGIN_COL],
@@ -55,6 +62,7 @@ class ProbabilisticClassification(object):
         self.set_origin_as_categorical()
         self.save_base_table()
 
+        self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.CATEGORICAL_VARIABLES] = self.get_categorical_variables()
         self.auto_ml_config[AutoMLConfig.DATA][AutoMLConfig.COL_NAMES] = self.base_table_df.columns
 
         trainer = AutoMLTrainer(self.auto_ml_config)

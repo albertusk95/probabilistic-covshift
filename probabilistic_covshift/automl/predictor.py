@@ -9,7 +9,7 @@ logger = util.create_logger(__name__)
 
 
 class AutoMLPredictor(object):
-    def __init__(self, auto_ml_config,  num_source, num_target):
+    def __init__(self, auto_ml_config, num_source, num_target):
         self.auto_ml_config = auto_ml_config
         self.num_source = num_source
         self.num_target = num_target
