@@ -46,7 +46,6 @@ Prepare the configuration for AutoML.
 ```
 conf = {
     AutoMLConfig.DATA: {
-        AutoMLConfig.CATEGORICAL_VARIABLES: ['col_a', 'col_b'],
         AutoMLConfig.LABEL_COL: 'label',
         AutoMLConfig.ORIGIN_COL: OriginFeatures.ORIGIN,
         AutoMLConfig.WEIGHT_COL: WeightFeatures.WEIGHT,
