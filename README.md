@@ -106,7 +106,7 @@ weight_df = spark.read.csv(weight_path, header=True)
 weighted_base_frame_df = base_frame_df.join(weight_df, how='left', on='row_id').drop('row_id')
 ```
 
-How about if we'd like to append the weights to the source data only?
+How if we'd like to append the weights to the source data only?
 
 ```python
 base_frame_df = spark.read.parquet(base_table_path)
